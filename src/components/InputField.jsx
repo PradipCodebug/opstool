@@ -1,4 +1,4 @@
-const InputField = ({ textContent, fieldId }) => {
+const InputField = ({ textContent, fieldId, value, onChange }) => {
   return (
     <>
       <label for="inputAccountNumber" className="col-sm-3 col-form-label">
@@ -9,7 +9,9 @@ const InputField = ({ textContent, fieldId }) => {
           type="text"
           className="form-control"
           id="inputAccountNumber"
+          value={value}
           placeholder="AccountNumber"
+          onChange={(e) => onChange(e)}
         />
       </div>
     </>
