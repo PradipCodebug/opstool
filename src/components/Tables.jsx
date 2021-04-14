@@ -7,7 +7,7 @@ const Tables = ({ tableData }) => {
         border: "1px solid black",
       }}
     >
-      <tr
+      <thead
         style={{
           border: "1px solid black",
         }}
@@ -15,7 +15,7 @@ const Tables = ({ tableData }) => {
         <th>System Name</th>
         <th>Account Number</th>
         <th>Scenarios</th>
-      </tr>
+      </thead>
 
       {tableData.map((eachDataSet) => (
         <tr

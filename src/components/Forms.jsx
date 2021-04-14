@@ -5,10 +5,22 @@ import Buttons from "./Buttons";
 import Dropdowns from "./Dropdowns";
 
 class Forms extends React.Component {
-  state = { systemsName: "", accountNumber: "", scenarios: "" };
+  state = { systemsName: "", accountNumber: "", scenarios: [] };
 
-  handleOnChange = (e) => {
+  handleOnInputChange = (e) => {
+    this.setState({ accountNumber: e.target.value });
+  };
+
+  handleOnDropDownChange = (e) => {
     this.setState({ systemsName: e.target.value });
+  };
+
+  handleOnModel = () => {
+    this.props.onClick(this.state);
+  };
+
+  handleOnClear = () => {
+    this.setState({ accountNumber: "" });
   };
 
   render() {
@@ -18,6 +30,7 @@ class Forms extends React.Component {
           <Dropdowns
             labelName="System Name"
             optionList={this.props.systemNames}
+            onChange={(e) => this.handleOnDropDownChange(e)}
           />
         </div>
 
@@ -25,11 +38,15 @@ class Forms extends React.Component {
           <InputField
             textContent="Account Number"
             fieldId="inputAccountNumber"
-            value={this.state.systemsName}
-            onChange={(e) => this.handleOnChange(e)}
+            value={this.state.accountNumber}
+            onChange={(e) => this.handleOnInputChange(e)}
           />
 
-          <Buttons btnContent="Clear" btnId="clear" />
+          <Buttons
+            btnContent="Clear"
+            btnId="clear"
+            onClick={this.handleOnClear}
+          />
         </div>
         {this.props.scenarioNames.map((eachScenario) => (
           <CheckBoxes
@@ -41,7 +58,11 @@ class Forms extends React.Component {
         <div className="form-group row py-3">
           <span className="col-sm-7"></span>
           <Buttons btnContent="Check" btnId="check" />
-          <Buttons btnContent="Model" btnId="model" />
+          <Buttons
+            btnContent="Model"
+            btnId="model"
+            onClick={this.handleOnModel}
+          />
         </div>
       </form>
     );

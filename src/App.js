@@ -17,7 +17,20 @@ class App extends React.Component {
     ],
   };
 
+  onModelClick = (formContent) => {
+    const dataTableClone = [...this.state.dataForTable];
+
+    const dataArray = {
+      company: formContent.systemsName,
+      contact: formContent.accountNumber,
+      country: "Germany",
+    };
+    dataTableClone.push(dataArray);
+    this.setState({ dataForTable: dataTableClone });
+  };
+
   render() {
+    console.log(this.state.dataForTable);
     return (
       <React.Fragment>
         <Header />
@@ -30,7 +43,7 @@ class App extends React.Component {
             <Forms
               systemNames={this.state.systemNames}
               scenarioNames={this.state.scenarioNames}
-              onChange={this.handleOnChange}
+              onClick={(formContent) => this.onModelClick(formContent)}
             />
           </div>
         </div>
