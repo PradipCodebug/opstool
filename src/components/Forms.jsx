@@ -5,7 +5,7 @@ import Buttons from "./Buttons";
 import Dropdowns from "./Dropdowns";
 
 class Forms extends React.Component {
-  state = { systemsName: "", accountNumber: "", scenarios: [] };
+  state = { systemsName: "", accountNumber: "", scenarios: "" };
 
   handleOnInputChange = (e) => {
     this.setState({ accountNumber: e.target.value });
@@ -16,6 +16,7 @@ class Forms extends React.Component {
   };
 
   handleOnModel = () => {
+    console.log(JSON.stringify(this.state));
     this.props.onClick(this.state);
   };
 

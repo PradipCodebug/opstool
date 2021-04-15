@@ -5,32 +5,47 @@ import Tables from "./components/Tables";
 import Forms from "./components/Forms";
 
 class App extends React.Component {
+  componentDidMount() {
+    this.fetchTasks();
+  }
+
   state = {
     systemNames: ["CORES", "UNION", "RISKLINK"],
-    scenarioNames: ["DE EQ", "IT EQ", "CN TC", "IN TC"],
-    dataForTable: [
-      {
-        company: "Alfreds Futterkiste",
-        contact: "Maria Anders",
-        country: "Germany",
-      },
-    ],
+    scenarioNames: ["DE EQ", "IT EQ", "CN TC", "IN TC", "IN EQ"],
+    dataForTable: [],
   };
 
-  onModelClick = (formContent) => {
-    const dataTableClone = [...this.state.dataForTable];
+  fetchTasks = async () => {
+    const res = await fetch("http://localhost:5000/dataForTable");
+    const data = await res.json();
 
-    const dataArray = {
-      company: formContent.systemsName,
-      contact: formContent.accountNumber,
-      country: "Germany",
-    };
-    dataTableClone.push(dataArray);
-    this.setState({ dataForTable: dataTableClone });
+    this.setState({ dataForTable: data });
+  };
+
+  onModelClick = async (formContent) => {
+    const res = await fetch("http://localhost:5000/dataForTable", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formContent),
+    });
+
+    const data = await res.json();
+
+    this.setState({ dataForTable: data });
+    // const dataTableClone = [...this.state.dataForTable];
+
+    // const dataArray = {
+    //   company: formContent.systemsName,
+    //   contact: formContent.accountNumber,
+    //   country: "Germany",
+    // };
+    // dataTableClone.push(dataArray);
+    // this.setState({ dataForTable: dataTableClone });
   };
 
   render() {
-    console.log(this.state.dataForTable);
     return (
       <React.Fragment>
         <Header />

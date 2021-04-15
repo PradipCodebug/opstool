@@ -23,9 +23,9 @@ const Tables = ({ tableData }) => {
             border: "1px solid black",
           }}
         >
-          <td>{eachDataSet.company}</td>
-          <td>{eachDataSet.contact}</td>
-          <td>{eachDataSet.country}</td>
+          <td>{eachDataSet.systemsName}</td>
+          <td>{eachDataSet.accountNumber}</td>
+          <td>{eachDataSet.scenarios}</td>
         </tr>
       ))}
     </table>

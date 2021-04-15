@@ -1,0 +1,34 @@
+{
+  "dataForTable": [
+    {
+      "id": 1,
+      "systemsName": "Pradip Jha",
+      "accountNumber": "Maria Anders",
+      "scenarios": "Germany"
+    },
+    {
+      "systemsName": "UNION",
+      "accountNumber": "Vicky",
+      "scenarios": "",
+      "id": 2
+    },
+    {
+      "systemsName": "RISKLINK",
+      "accountNumber": "Vicky",
+      "scenarios": "",
+      "id": 3
+    },
+    {
+      "systemsName": "RISKLINK",
+      "accountNumber": "WTF",
+      "scenarios": "",
+      "id": 4
+    },
+    {
+      "systemsName": "UNION",
+      "accountNumber": "Vicky Jha",
+      "scenarios": "",
+      "id": 5
+    }
+  ]
+}
